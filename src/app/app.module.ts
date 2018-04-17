@@ -11,7 +11,7 @@ import { AppareilComponent } from './appareil/appareil.component';
   declarations: [
     AppComponent,
     MonPremierComponent,
-    AppareilComponent
+    AppareilComponent,
   ],
   imports: [
     BrowserModule
