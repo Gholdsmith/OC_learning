@@ -1,29 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AppareilService } from './services/appareil.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuth = false;
 
-  appareils = [
-    {
-      name: 'Machine à laver',
-      status: 'éteint'
-    },
-    {
-      name: 'Télévision',
-      status: 'éteint'
-    },
-    {
-      name: 'Ordinateur',
-      status: 'éteint'
-    }
-  ];
+  appareils: any[];
 
-  constructor() {
+  constructor(private appreilService: AppareilService) {
 
     setTimeout(
       () => {
@@ -31,9 +19,20 @@ export class AppComponent {
       }, 4000);
   }
 
-  onAllumer() {
-    console.log('On allume tout');
+  ngOnInit() {
+    this.appareils = this.appreilService.appareils;
   }
 
+  onAllumer() {
+    this.appreilService.switchOnAll();
+  }
+
+  onEteindre() {
+    if (confirm('Êtes vous sur de vouloir éteindre tous vos appreil ?')) {
+      this.appreilService.switchOffAll();
+    } else {
+      return null;
+    }
+  }
 }
 
