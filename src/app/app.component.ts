@@ -7,8 +7,8 @@ import { AppareilService } from './services/appareil.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  isAuth = false;
 
+  isAuth = false;
   appareils: any[];
 
   constructor(private appreilService: AppareilService) {
@@ -23,16 +23,5 @@ export class AppComponent implements OnInit {
     this.appareils = this.appreilService.appareils;
   }
 
-  onAllumer() {
-    this.appreilService.switchOnAll();
-  }
-
-  onEteindre() {
-    if (confirm('Êtes vous sur de vouloir éteindre tous vos appreil ?')) {
-      this.appreilService.switchOffAll();
-    } else {
-      return null;
-    }
-  }
 }
 

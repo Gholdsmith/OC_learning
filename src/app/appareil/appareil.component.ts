@@ -12,7 +12,7 @@ export class AppareilComponent implements OnInit {
   @Input() appareilStatus: string;
   @Input() index: number;
 
-  constructor(private appreilService: AppareilService) {
+  constructor(private appareilService: AppareilService) {
 
   }
 
@@ -22,6 +22,14 @@ export class AppareilComponent implements OnInit {
 
   getStatus() {
     return this.appareilStatus;
+  }
+
+  onSwitch() {
+    if (this.appareilStatus === 'allumé') {
+      this.appareilService.switchOffOne(this.index);
+    } else if (this.appareilStatus === 'éteint') {
+      this.appareilService.switchOnOne(this.index);
+    }
   }
 
 }
