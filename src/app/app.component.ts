@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { resolve } from 'path';
+import { reject } from 'q';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +11,13 @@ export class AppComponent {
   isAuth = false;
 
   appareils = [
-    {
+  {
       name: 'Machine à laver',
       status: 'éteint'
     },
     {
       name: 'Télévision',
-      status: 'éteint'
+      status: 'allumé'
     },
     {
       name: 'Ordinateur',
@@ -34,6 +36,14 @@ export class AppComponent {
   onAllumer() {
     console.log('On allume tout');
   }
+
+  lastUpdate = new Promise((resolve, reject) => {
+    const date = new Date();
+    setTimeout(() => {
+      resolve(date);
+    }, 2000);
+  })
+
 
 }
 
