@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppareilService } from '../services/appareil.service';
+import { Authservice } from '../services/auth.service';
 
 @Component({
   selector: 'app-appareil',
@@ -10,14 +11,16 @@ export class AppareilComponent implements OnInit {
 
   @Input() appareilName: string;
   @Input() appareilStatus: string;
-  @Input() index: number;
+  @Input() indexOfAppareil: number;
+  @Input() id: number;
+  isAuth: boolean;
 
-  constructor(private appareilService: AppareilService) {
+  constructor(private appareilService: AppareilService, private authService: Authservice) {
 
   }
 
   ngOnInit() {
-
+    this.isAuth = this.authService.isAuth;
   }
 
   getStatus() {
@@ -26,9 +29,9 @@ export class AppareilComponent implements OnInit {
 
   onSwitch() {
     if (this.appareilStatus === 'allumé') {
-      this.appareilService.switchOffOne(this.index);
+      this.appareilService.switchOffOne(this.indexOfAppareil);
     } else if (this.appareilStatus === 'éteint') {
-      this.appareilService.switchOnOne(this.index);
+      this.appareilService.switchOnOne(this.indexOfAppareil);
     }
   }
 

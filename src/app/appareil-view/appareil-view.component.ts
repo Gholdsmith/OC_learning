@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppareilService } from '../services/appareil.service';
+import { Authservice } from '../services/auth.service';
 
 @Component({
   selector: 'app-appareil-view',
@@ -8,6 +9,7 @@ import { AppareilService } from '../services/appareil.service';
 })
 export class AppareilViewComponent implements OnInit {
 
+  isAuth: boolean;
   appareils: any[];
   lastUpdate = new Promise((resolve, reject) => {
     const date = new Date();
@@ -18,11 +20,12 @@ export class AppareilViewComponent implements OnInit {
     );
   });
 
-  constructor(private appareilService: AppareilService) {
+  constructor(private appareilService: AppareilService, private authSetvice: Authservice) {
   }
 
   ngOnInit() {
     this.appareils = this.appareilService.appareils;
+    this.isAuth = this.authSetvice.isAuth;
   }
   onAllumer() {
     this.appareilService.switchOnAll();
