@@ -21,7 +21,7 @@ export class AuthComponent implements OnInit {
   onSignIn() {
     this.authService.signIn().then(
       () => {
-        console.log('sign in successful!');
+        console.log('authentifié avec succes!');
         this.authStatus = this.authService.isAuth;
         this.router.navigate(['appareils']);
       }
