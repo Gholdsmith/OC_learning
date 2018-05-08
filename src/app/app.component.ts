@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
-import { resolve } from 'path';
-import { reject } from 'q';
-=======
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs/Rx';
->>>>>>> d1502abba0c260b6dd111b5f0bd084371833af70
 
 @Component({
   selector: 'app-root',
@@ -18,7 +12,6 @@ import { Subscription } from 'rxjs/Rx';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-<<<<<<< HEAD
   appareils = [
   {
       name: 'Machine à laver',
@@ -33,10 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
       status: 'éteint'
     }
   ];
-=======
   secondes: number;
   counterSubscription: Subscription;
->>>>>>> d1502abba0c260b6dd111b5f0bd084371833af70
 
   constructor() { }
 
@@ -52,17 +43,5 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.counterSubscription.unsubscribe();
   }
-<<<<<<< HEAD
-
-  lastUpdate = new Promise((resolve, reject) => {
-    const date = new Date();
-    setTimeout(() => {
-      resolve(date);
-    }, 2000);
-  })
-
-
-=======
->>>>>>> d1502abba0c260b6dd111b5f0bd084371833af70
 }
 
