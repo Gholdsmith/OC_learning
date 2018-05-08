@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AppareilService } from '../services/appareil.service';
+import { Authservice } from '../services/auth.service';
 
 @Component({
   selector: 'app-appareil',
@@ -9,22 +11,27 @@ export class AppareilComponent implements OnInit {
 
   @Input() appareilName: string;
   @Input() appareilStatus: string;
-  constructor() { }
+  @Input() indexOfAppareil: number;
+  @Input() id: number;
+  isAuth: boolean;
+
+  constructor(private appareilService: AppareilService, private authService: Authservice) {
+
+  }
 
   ngOnInit() {
-
+    this.isAuth = this.authService.isAuth;
   }
 
   getStatus() {
     return this.appareilStatus;
   }
 
-  getColor() {
+  onSwitch() {
     if (this.appareilStatus === 'allumé') {
-      return 'green';
-    }
-    else if (this.appareilStatus === 'éteint') {
-      return 'red';
+      this.appareilService.switchOffOne(this.indexOfAppareil);
+    } else if (this.appareilStatus === 'éteint') {
+      this.appareilService.switchOnOne(this.indexOfAppareil);
     }
   }
 
