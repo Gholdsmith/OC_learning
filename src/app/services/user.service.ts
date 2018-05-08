@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 export class UserService {
     private users: User[] = [
         {
-            firstNAme: 'James',
+            firstName: 'James',
             lastName: 'Smith',
             email: 'james@smith.com',
             drinkPreference: 'coca',
